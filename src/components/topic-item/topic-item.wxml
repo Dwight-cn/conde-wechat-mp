@@ -1,0 +1,35 @@
+<view class="topic-item" hover-class="navigator-hover" bindtap="tapJumpTopicDetail">
+    <view class="topic-header" catchtap="tapJumpUserProfile">
+        <!-- 主题作者头像 -->
+        <image class="topic-author-avatar" wx:if="{{ data.author.avatar_url }}" src="{{ data.author.avatar_url }}" />
+        <view class="topic-header-right">
+            <!-- 主题作者名称 -->
+            <view class="topic-author-name" wx:if="{{ data.author.loginname }}">
+                {{ data.author.loginname }}
+            </view>
+            <!-- 发布时间 -->
+            <view class="topic-create-at">{{ create_at }}</view>
+        </view>
+    </view>
+    <view class="topic-main">
+        <!-- 主题标题 -->
+        <view class="topic-title">{{ data.title }}</view>
+        <!-- 主题内容 -->
+        <view class="topic-content">{{ content }}</view>
+    </view>
+    <view class="topic-footer" hover-class="navigator-hover">
+        <!-- 主题标签 -->
+        <topic-tag type="{{ data.tab }}"></topic-tag>
+        <!-- 主题创建时间 -->
+        <view class="topic-footer-right">
+            <!-- 主题访问数 -->
+            <text>{{ data.visit_count }}阅读</text>
+            <text>·</text>
+            <!-- 主题回复数 -->
+            <text>{{ data.reply_count }}回复</text>
+            <text>·</text>
+            <!-- 主题最后一次回复的时间 -->
+            <text>{{ last_reply_at }}</text>
+        </view>
+    </view>
+</view>
