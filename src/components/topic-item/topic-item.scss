@@ -1,11 +1,7 @@
 .topic-item {
-  margin: 20px;
-  border-radius: 20px;
-  /* background: #f00; */
-  padding: 20px;
+  margin: 10px;
+  padding: 10px;
   border-bottom: 1px solid #efefef;
-  // border: 1px solid #eee;
-  // box-shadow: 0 5px 0 #eee;
   background-color: #fff;
 
   .topic-header {
@@ -16,22 +12,27 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
+      background-color: #eee;
     }
 
-    .topic-header-right {
+    .topic-header-info {
       display: flex;
       flex-direction: column;
-      // justify-content: center;
       margin-left: 20px;
+      flex: 1 1 auto;
 
-      .topic-author-name{
+      .topic-author-name {
         font-size: 24px;
         color: #1b1b19;
       }
-      .topic-create-at{
+      .topic-create-at {
         font-size: 20px;
         color: #999;
       }
+    }
+
+    topic-tag{
+      margin-left: 10px;
     }
   }
 
@@ -47,17 +48,21 @@
     line-height: 36px;
     color: #999;
     margin-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .topic-footer {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+    height: 36px;
 
     .topic-footer-right {
       font-size: 22px;
       color: #999;
-      text{
+      text {
         padding: 0 5px;
         line-height: 36px;
       }

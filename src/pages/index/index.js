@@ -1,6 +1,7 @@
 
 
 import { getTopicsList } from '../../api/topic'
+import { filterHTMLTag, formatTime, getDateDiff } from '../../lib/util'
 
 
 //index.js
@@ -19,6 +20,8 @@ Page({
         topicTabs: ['', 'good', 'share', 'ask', 'job'],
         topicPages: [1, 1, 1, 1],
         topicContent: [[], [], [], [], []],
+        topicLoading: [false, false, false, false, false],
+        topicLoaded: [false, false, false, false, false],
         defaultTopicParams: {
             tab: '', // 主题分类。目前有 ask share job good
             page: 1, // 页数
@@ -35,57 +38,78 @@ Page({
 
     // 获取主题列表
     _getTopicsList() {
-        let { currentTopic, topicTabs, topicPages, defaultTopicParams } = this.data;
-        let params = {
-            ...defaultTopicParams,
-            page: topicPages[currentTopic],
-            tab: topicTabs[currentTopic]
-        }
-
-        wx.showNavigationBarLoading();
-        this.setData({ moreLoading: true });
-
         return new Promise((resolve, reject) => {
+            let { currentTopic, topicTabs, topicPages, defaultTopicParams, topicLoading } = this.data;
+            if (topicLoading[currentTopic]) reject('loading...');
+            let params = {
+                ...defaultTopicParams,
+                page: topicPages[currentTopic],
+                tab: topicTabs[currentTopic]
+            }
+
+            wx.showNavigationBarLoading();
+            this.setData({ [`topicLoading[${currentTopic}]`]: true })
             getTopicsList(params)
                 .then(res => {
                     wx.stopPullDownRefresh();
                     wx.hideNavigationBarLoading();
-                    this.setData({ moreLoading: false })
-                    resolve(res);
+                    let _res = this.topicListModel(res);
+                    // console.log('res:', _res)
+                    resolve(_res);
+                    // this.setData({ [`topicLoading[${currentTopic}]`]: false })
                 })
                 .catch(err => {
                     reject(err);
+                    this.setData({ [`topicLoading[${currentTopic}]`]: false })
                 })
         })
     },
     update() {
-        if (this.data.moreLoading) return
         let { currentTopic, topicPages, topicContent } = this.data;
-        let _topicPages = [...topicPages];
-        let _topicContent = [...topicContent];
-        _topicPages[currentTopic] = 1;
-        this.setData({ topicPages: _topicPages });
+        this.setData({ [`topicPages[${currentTopic}]`]: 1 });
         this._getTopicsList()
             .then(res => {
-                _topicContent[currentTopic] = res;
                 this.setData({
-                    topicContent: _topicContent
+                    [`topicContent[${currentTopic}]`]: res,
+                    [`topicLoading[${currentTopic}]`]: false
                 })
             })
+            .catch(err => { })
     },
     loadMore() {
         let { currentTopic, topicPages, topicContent } = this.data;
-        let _topicPages = [...topicPages];
-        let _topicContent = [...topicContent];
-        _topicPages[currentTopic] += 1;
-        this.setData({ topicPages: _topicPages });
+        this.setData({ [`topicPages[${currentTopic}]`]: topicPages[currentTopic] + 1 });
         this._getTopicsList()
             .then(res => {
-                _topicContent[currentTopic] = [..._topicContent[currentTopic], ...res];
                 this.setData({
-                    topicContent: _topicContent
+                    [`topicContent[${currentTopic}]`]: [...topicContent[currentTopic], ...res],
+                    [`topicLoading[${currentTopic}]`]: false
                 })
+                console.log(this.data.topicContent[0])
             })
+            .catch(err => { })
+    },
+
+    // 简化列表数据
+    topicListModel(list) {
+        return list.map(item => {
+            return {
+                id: item.id,
+                author_id: item.author_id,
+                tab: item.tab,
+                content: filterHTMLTag(item.content).slice(0, 50),
+                // content: '',
+                title: item.title,
+                last_reply_at: getDateDiff(item.last_reply_at),
+                good: item.good,
+                top: item.top,
+                reply_count: item.reply_count,
+                visit_count: item.visit_count,
+                create_at: getDateDiff(item.create_at),
+                loginname: item.author.loginname,
+                avatar_url: item.author.avatar_url
+            }
+        })
     },
 
     tabTap(e) {
@@ -96,7 +120,6 @@ Page({
 
     // scrollHandle
     onPageScroll(e) {
-        console.log(1231)
         if (e.scrollTop >= 0) {
             this.setData({ topicTabFixed: true })
         } else {
@@ -110,13 +133,13 @@ Page({
         }
     },
     touchmoveHandle(e) {
-        console.log("手指移动");
+        // console.log("手指移动");
         if (!this.data.touchMoving) {
             this.setData({ touchMoving: true })
         }
     },
     touchendHandle(e) {
-        console.log("手指离开");
+        // console.log("手指离开");
         if (this.data.touchMoving) {
             this.setData({ touchMoving: false })
         }

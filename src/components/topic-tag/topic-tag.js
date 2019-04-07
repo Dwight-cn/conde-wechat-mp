@@ -12,12 +12,12 @@ Component({
     aTopicTagEnum: [
       {
         key: 'top',
-        value: '置顶',
+        value: '顶',
         class: 'topic-tag-top'
       },
       {
         key: 'good',
-        value: '精华',
+        value: '精',
         class: 'topic-tag-good'
       },
       {

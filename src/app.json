@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/mine/mine",
-    "pages/message/message"
+    "pages/message/message",
+    "pages/topic/topic"
   ],
   "window": {
     "navigationBarBackgroundColor": "#444",
