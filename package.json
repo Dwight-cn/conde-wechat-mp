@@ -57,5 +57,7 @@
     "through2": "^2.0.3",
     "wx-px2rpx": "^1.2.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "towxml": "^2.1.4"
+  }
 }

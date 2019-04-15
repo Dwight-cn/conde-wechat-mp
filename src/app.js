@@ -1,4 +1,5 @@
 //app.js
+const Towxml = require('./components/towxml/main');     //引入towxml库
 App({
   onLaunch: function() {
 
@@ -34,6 +35,7 @@ App({
       }
     })
   },
+  towxml: new Towxml(),                   //创建towxml对象，供小程序页面使用
   globalData: {
     userInfo: null
   }

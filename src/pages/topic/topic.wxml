@@ -1,0 +1,39 @@
+<import src="/components/towxml/entry.wxml" />
+<view class="topic-header">
+    <view class="topic-title">{{topic.title}}</view>
+    <view class="topic-author">
+        <!-- 主题作者头像 -->
+        <image class="topic-author-avatar" wx:if="{{ topic.author.avatar_url }}" src="{{ topic.author.avatar_url }}" />
+        <view class="topic-header-info">
+            <!-- 主题作者名称 -->
+            <view class="topic-author-name" wx:if="{{ topic.author.loginname }}">
+                {{  topic.author.loginname }}
+            </view>
+            <!-- 发布时间 -->
+            <view class="topic-create-at">{{ topic.create_at }}</view>
+        </view>
+    </view>
+</view>
+<!-- 文章内容 -->
+<view class="topic-content">
+    <template is="entry" data="{{...topicContent}}" />
+</view>
+<!-- 评论区 -->
+<view class="topic-replies">
+    <view class="replies-title">共{{topic.reply_count || 0}}条评论</view>
+    <view class="reply-item" wx:for="{{topic.replies}}" wx:key="">
+        <view class="topic-author">
+            <!-- 主题作者头像 -->
+            <image class="topic-author-avatar" wx:if="{{ item.author.avatar_url }}" src="{{ item.author.avatar_url }}" />
+            <view class="topic-header-info">
+                <!-- 主题作者名称 -->
+                <view class="topic-author-name" wx:if="{{ item.author.loginname }}">
+                    {{ item.author.loginname }}
+                </view>
+                <!-- 发布时间 -->
+                <view class="topic-create-at">{{ item.create_at }}</view>
+            </view>
+        </view>
+        <template is="entry" data="{{...item.content}}" />
+    </view>
+</view>

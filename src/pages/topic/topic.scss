@@ -1,0 +1,60 @@
+@import "../../components/towxml/style/main.wxss";
+@import "../../components/towxml/style/theme/light.wxss";
+.topic-author {
+  display: flex;
+  align-items: center;
+
+  .topic-author-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #eee;
+  }
+
+  .topic-header-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    flex: 1 1 auto;
+
+    .topic-author-name {
+      font-size: 24px;
+      color: #1b1b19;
+    }
+    .topic-create-at {
+      font-size: 20px;
+      color: #999;
+    }
+  }
+
+  topic-tag {
+    margin-left: 10px;
+  }
+}
+
+.topic-header{
+    padding: 20px;
+    .topic-title{
+        font-size: 36px;
+        line-height: 1.8;
+        font-weight: bold;
+    }
+}
+.topic-content{
+    padding: 20px;
+}
+.topic-replies{
+    padding: 20px;
+
+    .replies-title{
+        font-size: 32px;
+        font-weight: bold;
+    }
+    .reply-item{
+        border-bottom: 1px solid #efefef;
+        margin-top: 20px;
+        .h2w{
+            // padding-left: 50px;
+        }
+    }
+}
