@@ -18,14 +18,14 @@ Page({
         _tabBorderOffser: 0,
         topicText: ['全部', '精华', '分享', '问答', '招聘'],
         topicTabs: ['', 'good', 'share', 'ask', 'job'],
-        topicPages: [1, 1, 1, 1],
+        topicPages: [1, 17, 1, 1],
         topicContent: [[], [], [], [], []],
         topicLoading: [false, false, false, false, false],
         topicLoaded: [false, false, false, false, false],
         defaultTopicParams: {
             tab: '', // 主题分类。目前有 ask share job good
             page: 1, // 页数
-            limit: 10, // 每一页的主题数量
+            limit: 40, // 每一页的主题数量
             mdrender: true // 当为 'false' 时，不渲染。默认为 'true'，渲染出现的所有 markdown 格式文本。
         },
         moreLoading: false
@@ -54,9 +54,13 @@ Page({
                     wx.stopPullDownRefresh();
                     wx.hideNavigationBarLoading();
                     let _res = this.topicListModel(res);
+                    let loaded = false;
                     // console.log('res:', _res)
+                    if (_res.length === 0) {
+                        loaded = true
+                    }
+                    this.setData({ [`topicLoaded[${currentTopic}]`]: loaded })
                     resolve(_res);
-                    // this.setData({ [`topicLoading[${currentTopic}]`]: false })
                 })
                 .catch(err => {
                     reject(err);
@@ -85,7 +89,7 @@ Page({
                     [`topicContent[${currentTopic}]`]: [...topicContent[currentTopic], ...res],
                     [`topicLoading[${currentTopic}]`]: false
                 })
-                console.log(this.data.topicContent[0])
+                // console.log(this.data.topicContent[0])
             })
             .catch(err => { })
     },
@@ -98,7 +102,6 @@ Page({
                 author_id: item.author_id,
                 tab: item.tab,
                 content: filterHTMLTag(item.content).slice(0, 50),
-                // content: '',
                 title: item.title,
                 last_reply_at: getDateDiff(item.last_reply_at),
                 good: item.good,
@@ -106,8 +109,7 @@ Page({
                 reply_count: item.reply_count,
                 visit_count: item.visit_count,
                 create_at: getDateDiff(item.create_at),
-                loginname: item.author.loginname,
-                avatar_url: item.author.avatar_url
+                author: item.author
             }
         })
     },

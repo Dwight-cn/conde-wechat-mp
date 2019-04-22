@@ -1,6 +1,7 @@
 {
     "component": true,
     "usingComponents": {
+        "author-info":"/components/author-info/author-info",
         "topic-tag": "/components/topic-tag/topic-tag"
     }
 }

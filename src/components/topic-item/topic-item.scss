@@ -8,27 +8,8 @@
     display: flex;
     align-items: center;
 
-    .topic-author-avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background-color: #eee;
-    }
-
-    .topic-header-info {
-      display: flex;
-      flex-direction: column;
-      margin-left: 20px;
+    author-info{
       flex: 1 1 auto;
-
-      .topic-author-name {
-        font-size: 24px;
-        color: #1b1b19;
-      }
-      .topic-create-at {
-        font-size: 20px;
-        color: #999;
-      }
     }
 
     topic-tag{

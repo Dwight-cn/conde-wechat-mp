@@ -1,0 +1,10 @@
+{
+    "navigationBarBackgroundColor": "#80bd01",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": false,
+    "backgroundColor": "#80bd01",
+    "backgroundTextStyle": "dark",
+    "usingComponents": {
+        "topic-item": "../../components/topic-item/topic-item"
+    }
+}

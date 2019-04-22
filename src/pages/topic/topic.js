@@ -1,5 +1,5 @@
 import { getTopicDetail } from '../../api/topic'
-import { filterHTMLTag, formatTime, getDateDiff } from '../../lib/util'
+import { getDateDiff } from '../../lib/util'
 
 const app = getApp();
 Page({
@@ -69,11 +69,12 @@ Page({
     },
     formatReplies(rep) {
         rep.map(item => {
-            let replyContent = app.towxml.toJson(
-                item.content,               // `markdown`或`html`文本内容
+            let replyContent = item.content.replace(/\/user\//g, '/pages/user/user?name=');
+            replyContent = app.towxml.toJson(
+                replyContent,               // `markdown`或`html`文本内容
                 'markdown'              // `markdown`或`html`
             );
-            replyContent = app.towxml.initData(replyContent,{
+            replyContent = app.towxml.initData(replyContent, {
                 base: '/',    // 需要解析的内容中相对路径的资源`base`地址
                 app: this
             })

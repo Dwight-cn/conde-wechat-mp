@@ -1,0 +1,33 @@
+<view class="user-top-bg"></view>
+<!-- 头像 -->
+<image class="user-avatar" src="{{userInfo.avatar_url || '../../images/bg.gif'}}" />
+<!-- 用户名 -->
+<view class="username">{{ userInfo.loginname || '　'}}</view>
+<!-- github地址 -->
+<view class="user-github" wx:if="{{ userInfo.githubUsername }}">{{ userInfo.githubUsername || '　' }}@github.com</view>
+<view class="user-data">
+    <view class="user-data-item">
+        <view class="data-number">{{userInfo.score || '-'}}</view>
+        <view class="data-title">积分</view>
+    </view>
+    <view class="user-data-item">
+        <view class="data-number">{{userInfo.create_at || '-'}}</view>
+        <view class="data-title">天前注册</view>
+    </view>
+</view>
+<view class="user-bottom">
+    <!-- 标签 -->
+    <view class="top-tab user-top-tab">
+        <view wx:for="{{tabText}}" wx:key="{{item}}" bind:tap="tabTap" data-index="{{index}}" class="top-tab-item {{ currentTab === index ? 'cur' : '' }}">
+            {{item}}
+        </view>
+        <view class="top-tab-border" style="left: {{ tabBorderOffser }}px"></view>
+    </view>
+    <swiper class="user-list-wrap" current="{{currentTab}}" bindchange="swiperChangeHandle" bindtransition="swiperTransitionHandle" bindanimationfinish="animationfinishHandle">
+        <swiper-item wx:for="{{tabContent}}" wx:key="{{index}}" wx:for-item="list" wx:for-index="idx" class="top-list-item">
+            <scroll-view scroll-y="false" bindscrolltolower="loadMore">
+                <topic-item wx:for="{{list}}" wx:key="{{item.id}}" data="{{item}}"></topic-item>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+</view>

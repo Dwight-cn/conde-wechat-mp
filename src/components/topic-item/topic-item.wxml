@@ -1,27 +1,23 @@
 <view class="topic-item" hover-class="navigator-hover" data-id="{{data.id}}" bindtap="tapJumpTopicDetail">
-    <view class="topic-header" catchtap="tapJumpUserProfile">
-        <!-- 主题作者头像 -->
-        <image class="topic-author-avatar" wx:if="{{ data.avatar_url }}" src="{{ data.avatar_url }}" />
-        <view class="topic-header-info">
-            <!-- 主题作者名称 -->
-            <view class="topic-author-name" wx:if="{{ data.loginname }}">{{ data.loginname }}</view>
-            <!-- 发布时间 -->
-            <view class="topic-create-at">{{  data.create_at }}</view>
-        </view>
+    <view class="topic-header">
+        <!-- 主题作者信息 -->
+        <author-info  author="{{data.author}}" create-at="{{data.create_at}}"></author-info>
+        <!-- 是否置顶 -->
         <topic-tag type="top" wx:if="{{data.top}}"></topic-tag>
+        <!-- 是否加精 -->
         <topic-tag type="good" wx:if="{{data.good}}"></topic-tag>
     </view>
     <view class="topic-main">
         <!-- 主题标题 -->
         <view class="topic-title">{{ data.title }}</view>
         <!-- 主题内容 -->
-        <view class="topic-content">{{  data.content }}</view>
+        <view class="topic-content" wx:if="{{ data.content }}">{{  data.content }}</view>
     </view>
-    <view class="topic-footer" hover-class="navigator-hover">
+    <view class="topic-footer" hover-class="navigator-hover" wx:if="{{ data.tab ||  data.visit_count }}">
         <!-- 主题标签 -->
-        <topic-tag type="{{ data.tab }}"></topic-tag>
+        <topic-tag type="{{ data.tab }}" wx:if="{{ data.tab }}"></topic-tag>
         <!-- 主题创建时间 -->
-        <view class="topic-footer-right">
+        <view class="topic-footer-right" wx:if="{{ data.visit_count }}">
             <!-- 主题访问数 -->
             <text>{{ data.visit_count }}阅读</text>
             <text>·</text>

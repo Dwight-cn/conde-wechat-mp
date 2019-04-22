@@ -10,8 +10,8 @@
         <swiper-item wx:for="{{topicContent}}" wx:key="{{index}}" wx:for-item="list" wx:for-index="idx" class="top-list-item">
             <scroll-view scroll-y="false" upper-threshold="-20" bindscrolltoupper="upper" bindscrolltolower="loadMore">
                 <topic-item wx:for="{{list}}" wx:key="{{item.id}}" data="{{item}}"></topic-item>
-                <view class="load-tips {{!topicLoading[idx]? 'hide': ''}}">加载中……</view>
-                <!-- <view class="load-tips">已经到底啦</view> -->
+                <view class="load-tips {{!topicLoading[idx]? 'hide': ''}}"  wx:if="{{!topicLoaded[idx]}}">加载中……</view>
+                <view class="load-tips" wx:if="{{!topicLoading[idx] &&  topicLoaded[idx]}}">已经到底啦</view>
             </scroll-view>
         </swiper-item>
     </swiper>

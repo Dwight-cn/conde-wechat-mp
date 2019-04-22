@@ -1,0 +1,10 @@
+<view class="author-info" catchtap="tapJumpUserProfile">
+    <!-- 主题作者头像 -->
+    <image class="author-avatar" wx:if="{{ author.avatar_url }}" src="{{  author.avatar_url }}" />
+    <view class="author-info-right">
+        <!-- 主题作者名称 -->
+        <view class="author-name" wx:if="{{ author.loginname }}">{{  author.loginname }}</view>
+        <!-- 发布时间 -->
+        <view class="create-at">{{ createAt }}</view>
+    </view>
+</view>

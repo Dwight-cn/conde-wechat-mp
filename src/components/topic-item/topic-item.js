@@ -30,11 +30,5 @@ Component({
                 url: `/pages/topic/topic?id=${this.data.data.id}`
             });
         },
-        // 点击跳转用户个人主页
-        tapJumpUserProfile() {
-            wx.navigateTo({
-                url: `/pages/user/user?name=${this.data.data.loginname}`
-            });
-        }
     }
 });
