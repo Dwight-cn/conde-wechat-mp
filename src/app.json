@@ -4,13 +4,14 @@
     "pages/mine/mine",
     "pages/message/message",
     "pages/topic/topic",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/login/login"
   ],
   "window": {
     "navigationBarBackgroundColor": "#444",
     "navigationBarTitleText": "CNode",
     "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": true,
+    "enablePullDownRefresh": false,
     "backgroundColor": "#444",
     "backgroundTextStyle": "light"
   },

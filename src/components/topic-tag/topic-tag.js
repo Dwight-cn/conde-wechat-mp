@@ -2,7 +2,7 @@ Component({
   properties: {
     type: {
       type: String,
-      value: 'ask',
+      value: '',
       observer(sNewVal) {
         this.fnInitTopicTagText(sNewVal);
       }

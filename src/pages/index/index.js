@@ -25,7 +25,7 @@ Page({
         defaultTopicParams: {
             tab: '', // 主题分类。目前有 ask share job good
             page: 1, // 页数
-            limit: 40, // 每一页的主题数量
+            limit: 20, // 每一页的主题数量
             mdrender: true // 当为 'false' 时，不渲染。默认为 'true'，渲染出现的所有 markdown 格式文本。
         },
         moreLoading: false
@@ -81,7 +81,8 @@ Page({
             .catch(err => { })
     },
     loadMore() {
-        let { currentTopic, topicPages, topicContent } = this.data;
+        let { currentTopic, topicPages, topicContent, topicLoaded } = this.data;
+        if (topicLoaded[currentTopic]) return
         this.setData({ [`topicPages[${currentTopic}]`]: topicPages[currentTopic] + 1 });
         this._getTopicsList()
             .then(res => {

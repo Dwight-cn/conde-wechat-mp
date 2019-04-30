@@ -1,3 +1,4 @@
-<view >
-    <image src="" />
+<view class="login-top">
+    <image class="logo-img" src="../../images/logo-light.png" />
 </view>
+<view class="login"></view>

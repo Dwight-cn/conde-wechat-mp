@@ -4,14 +4,20 @@
 <!-- 用户名 -->
 <view class="username">{{ userInfo.loginname || '　'}}</view>
 <!-- github地址 -->
-<view class="user-github" wx:if="{{ userInfo.githubUsername }}">{{ userInfo.githubUsername || '　' }}@github.com</view>
+<view class="user-github" wx:if="{{ userInfo.githubUsername }}">
+    {{ userInfo.githubUsername || '　' }}@github.com
+</view>
 <view class="user-data">
     <view class="user-data-item">
-        <view class="data-number">{{userInfo.score || '-'}}</view>
+        <view class="data-number">
+            {{ userInfo.score || 0}}
+        </view>
         <view class="data-title">积分</view>
     </view>
     <view class="user-data-item">
-        <view class="data-number">{{userInfo.create_at || '-'}}</view>
+        <view class="data-number">
+            {{ userInfo.create_at || 0 }}
+        </view>
         <view class="data-title">天前注册</view>
     </view>
 </view>
@@ -25,7 +31,7 @@
     </view>
     <swiper class="user-list-wrap" current="{{currentTab}}" bindchange="swiperChangeHandle" bindtransition="swiperTransitionHandle" bindanimationfinish="animationfinishHandle">
         <swiper-item wx:for="{{tabContent}}" wx:key="{{index}}" wx:for-item="list" wx:for-index="idx" class="top-list-item">
-            <scroll-view scroll-y="false" bindscrolltolower="loadMore">
+            <scroll-view scroll-y="{{allowScrollY}}" bindscrolltolower="loadMore">
                 <topic-item wx:for="{{list}}" wx:key="{{item.id}}" data="{{item}}"></topic-item>
             </scroll-view>
         </swiper-item>

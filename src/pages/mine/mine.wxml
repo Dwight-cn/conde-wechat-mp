@@ -1,1 +1,4 @@
-<view>我的</view>
+<view>
+我的
+</view>
+<navigator url="/pages/login/login">登录</navigator>

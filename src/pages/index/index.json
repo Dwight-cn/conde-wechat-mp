@@ -1,5 +1,7 @@
 {
+    "enablePullDownRefresh": false,
     "usingComponents": {
-        "topic-item": "../../components/topic-item/topic-item"
+        "topic-item": "../../components/topic-item/topic-item",
+        "loading": "../../components/loading/loading"
     }
 }

@@ -1,0 +1,8 @@
+<view class="loading-wrap">
+    <view class="loading-ani-wrap">
+        <view class="la-item l-a-1"></view>
+        <view class="la-item l-a-2"></view>
+        <view class="la-item l-a-3"></view>
+    </view>
+    加载中...
+</view>
