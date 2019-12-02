@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/message/message",
+    "pages/topic/topic",
+    "pages/user/user",
+    "pages/login/login"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#444",
+    "navigationBarTitleText": "CNode",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": false,
+    "backgroundColor": "#444",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#444",
+    "selectedColor": "#444",
+    "borderStyle": "white",
+    "backgroundColor": "#f6f8f9",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/tabbar/icon-home.png",
+        "selectedIconPath": "images/tabbar/icon-home-fill.png"
+      },
+      {
+        "text": "消息",
+        "pagePath": "pages/message/message",
+        "iconPath": "images/tabbar/icon-message.png",
+        "selectedIconPath": "images/tabbar/icon-message-fill.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/mine/mine",
+        "iconPath": "images/tabbar/icon-mine.png",
+        "selectedIconPath": "images/tabbar/icon-mine-fill.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

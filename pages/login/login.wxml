@@ -1,0 +1,9 @@
+<view class="login-top">
+    <image class="logo-img" src="../../images/logo-light.png" />
+</view>
+<view class="login-bottom">
+    <view class="form-item">
+        <input placeholder="请输入AccessToken" bindinput="bindKeyInput" />
+    </view>
+    <button loading="{{ isLogining }}" bindtap="login" type="primary">登录</button>
+</view>

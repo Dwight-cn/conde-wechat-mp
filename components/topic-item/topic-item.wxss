@@ -1,0 +1,36 @@
+.topic-item {
+  margin: 10rpx 15rpx;
+  padding: 10rpx 15rpx;
+  border-bottom: 1rpx solid #efefef;
+  background-color: #fff; }
+  .topic-item .topic-header {
+    display: flex;
+    align-items: center; }
+    .topic-item .topic-header author-info {
+      flex: 1 1 auto; }
+    .topic-item .topic-header topic-tag {
+      margin-left: 10rpx; }
+  .topic-item .topic-title {
+    color: #2e3135;
+    font-size: 32rpx;
+    line-height: 48rpx;
+    margin-top: 10rpx; }
+  .topic-item .topic-content {
+    font-size: 24rpx;
+    line-height: 36rpx;
+    color: #999;
+    margin-top: 5rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+  .topic-item .topic-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20rpx;
+    height: 36rpx; }
+    .topic-item .topic-footer .topic-footer-right {
+      font-size: 22rpx;
+      color: #999; }
+      .topic-item .topic-footer .topic-footer-right text {
+        padding: 0 5rpx;
+        line-height: 36rpx; }

@@ -1,0 +1,51 @@
+.user-top-bg {
+  background: #80bd01;
+  height: 100rpx; }
+
+.user-avatar {
+  display: block;
+  width: 180rpx;
+  height: 180rpx;
+  margin: -90rpx auto 0;
+  border-radius: 50%; }
+
+.username {
+  font-size: 36rpx;
+  text-align: center;
+  line-height: 1.8;
+  font-weight: bold;
+  color: #2e3135; }
+
+.user-github {
+  font-size: 24rpx;
+  text-align: center;
+  color: #999; }
+
+.user-data {
+  display: flex;
+  justify-content: center;
+  margin-top: 20rpx; }
+  .user-data .user-data-item {
+    text-align: center;
+    margin: 0 20rpx; }
+    .user-data .user-data-item .data-number {
+      font-size: 34rpx;
+      color: #2e3135;
+      font-weight: bold; }
+    .user-data .user-data-item .data-title {
+      font-size: 22rpx;
+      color: #999; }
+
+.user-bottom {
+  height: 100vh;
+  display: flex;
+  margin-top: 20rpx;
+  flex-direction: column; }
+  .user-bottom .user-top-tab {
+    flex: 0 0 auto; }
+    .user-bottom .user-top-tab .top-tab-border {
+      width: 33.3%; }
+  .user-bottom .user-list-wrap {
+    flex: 1 1 auto; }
+    .user-bottom .user-list-wrap scroll-view {
+      height: 100%; }

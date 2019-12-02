@@ -1,0 +1,17 @@
+.topic-tag {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 10rpx;
+  color: #747474;
+  background: #EEEEEE;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  border-radius: 6rpx; }
+
+.topic-tag-top {
+  color: #ffffff;
+  background: #80bd01; }
+
+.topic-tag-good {
+  color: #ffffff;
+  background: #80bd01; }

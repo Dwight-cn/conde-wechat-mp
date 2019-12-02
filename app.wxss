@@ -1,0 +1,45 @@
+/**app.wxss**/
+/* page {
+  font-family: "STHeitiSC-Light", "Microsoft YaHei Light", "Hiragino Sans GB", -apple-system, system-ui,
+    BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  font-size: 24px;
+} */
+
+.top-tab {
+  display: flex;
+  font-size: 28rpx;
+  position: relative;
+}
+.top-tab .top-tab-item {
+  flex: 1 1 auto;
+  text-align: center;
+  line-height: 80rpx;
+  color: #444;
+  transition: color 0.5s;
+}
+.top-tab .top-tab-item.cur {
+  color: #80bd01;
+}
+.top-tab .top-tab-border {
+  position: absolute;
+  height: 5rpx;
+  left: 0;
+  bottom: 0;
+  background: #80bd01;
+}
+
+button {
+  border: none;
+  border-radius: 2rpx;
+}
+button::after {
+  display: none;
+}
+button[type="primary"] {
+  background: #80bd01;
+}
+button[type="primary"].button-hover {
+  color: #fff;
+  background-color: #6ba44e;
+}
