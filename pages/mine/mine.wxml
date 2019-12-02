@@ -1,4 +1,14 @@
-<view>
-我的
+<view class="mine-header">
+  <block wx:if="{{!$state.isLogin}}">
+    <navigator url="/pages/login/login">
+      <view class="default-avatar"></view>
+      <view class="loginname">立即登录</view>
+    </navigator>
+  </block>
+  <block wx:else>
+    <navigator url="{{'/pages/user/user?name=' + $state.userInfo.loginname}}">
+      <image src="{{$state.userInfo.avatar_url}}" class="user-avatar" />
+      <view class="loginname">{{$state.userInfo.loginname}}</view>
+    </navigator>
+  </block>
 </view>
-<navigator url="/pages/login/login">登录</navigator>
