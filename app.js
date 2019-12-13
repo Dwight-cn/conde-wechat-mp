@@ -36,7 +36,7 @@ App({
         // console.log(res)
         wx.setStorageSync('accessToken', accessToken)
         wx.setStorageSync('userInfo', res)
-        app.store.setState({
+        this.store.setState({
           isLogin: true,
           userInfo: res
         })
@@ -45,6 +45,15 @@ App({
       .catch(() => {
         wx.hideLoading()
       })
+  },
+
+  logout() {
+    wx.setStorageSync('accessToken', '')
+    wx.setStorageSync('userInfo', '')
+    this.store.setState({
+      isLogin: false,
+      userInfo: ''
+    })
   },
 
   towxml: new Towxml(),                   //创建towxml对象，供小程序页面使用

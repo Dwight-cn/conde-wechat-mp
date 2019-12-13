@@ -2,6 +2,7 @@
 
 import { getTopicsList } from '../../api/topic'
 import { filterHTMLTag, formatTime, getDateDiff } from '../../lib/util'
+import { throttle } from "../../utils/utils";
 
 
 //index.js
@@ -12,11 +13,9 @@ const app = getApp()
 Page({
     data: {
         currentTopic: 0,
-        topicTabFixed: false,
-        touchMoving: true,
         tabBorderOffser: 0,
         _tabBorderOffser: 0,
-        topicText: ['全部', '精华', '分享', '问答', '招聘'],
+        topicText: ['全部', '精华', '分享', '求助', '招聘'],
         topicTabs: ['', 'good', 'share', 'ask', 'job'],
         topicPages: [1, 17, 1, 1],
         topicContent: [[], [], [], [], []],
@@ -64,6 +63,8 @@ Page({
                 })
                 .catch(err => {
                     reject(err);
+                    wx.stopPullDownRefresh();
+                    wx.hideNavigationBarLoading();
                     this.setData({ [`topicLoading[${currentTopic}]`]: false })
                 })
         })
@@ -121,31 +122,8 @@ Page({
     },
 
 
-    // scrollHandle
-    onPageScroll(e) {
-        if (e.scrollTop >= 0) {
-            this.setData({ topicTabFixed: true })
-        } else {
-            this.setData({ topicTabFixed: false })
-        }
-    },
     upper(e) {
-        console.log("到顶了");
-        if (this.data.touchMoving) {
-            wx.startPullDownRefresh()
-        }
-    },
-    touchmoveHandle(e) {
-        // console.log("手指移动");
-        if (!this.data.touchMoving) {
-            this.setData({ touchMoving: true })
-        }
-    },
-    touchendHandle(e) {
-        // console.log("手指离开");
-        if (this.data.touchMoving) {
-            this.setData({ touchMoving: false })
-        }
+        this.update();
     },
 
     // swiperHandle
@@ -158,10 +136,15 @@ Page({
         // console.log(this.data.currentTopic)
     },
     animationfinishHandle(e) {
-        this.setData({ _tabBorderOffser: this.data.tabBorderOffser })
+        // console.log(this.data.tabBorderOffser)
+        this.data._tabBorderOffser= this.data.tabBorderOffser
     },
+
     swiperTransitionHandle(e) {
-        this.setData({ tabBorderOffser: this.data._tabBorderOffser + e.detail.dx / 5 })
+        // this.data._tabBorderOffser = this.data._tabBorderOffser + e.detail.dx / 5
+        // throttle((e) => {
+            this.setData({ tabBorderOffser: this.data._tabBorderOffser + e.detail.dx / 5})
+        // },500)(e)
     },
 
     onPullDownRefresh() {

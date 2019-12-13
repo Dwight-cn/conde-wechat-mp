@@ -22,7 +22,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.4",
+	"libVersion": "2.9.4",
 	"appid": "wx552bcdc8a68a32b4",
 	"projectname": "CNode",
 	"debugOptions": {

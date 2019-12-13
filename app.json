@@ -28,12 +28,6 @@
         "selectedIconPath": "images/tabbar/icon-home-fill.png"
       },
       {
-        "text": "消息",
-        "pagePath": "pages/message/message",
-        "iconPath": "images/tabbar/icon-message.png",
-        "selectedIconPath": "images/tabbar/icon-message-fill.png"
-      },
-      {
         "text": "我的",
         "pagePath": "pages/mine/mine",
         "iconPath": "images/tabbar/icon-mine.png",

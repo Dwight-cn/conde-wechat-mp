@@ -27,7 +27,7 @@ Component({
       },
       {
         key: 'ask',
-        value: '问答',
+        value: '求助',
         class: 'topic-tag-ask'
       },
       {

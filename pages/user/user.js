@@ -14,9 +14,12 @@ Page({
     },
     onLoad(option) {
         let userName = option.name;
+        let currentTab = option.tab;
         let userInfoPms = this._getUserInfo(userName);
         let userTopicCollectPms = this._getUserTopicCollect(userName);
-
+        if (currentTab) {
+            this.setData({ currentTab})
+        }
         Promise.all([userInfoPms, userTopicCollectPms])
             .then(() => {
                 this.getTabBarOffsetTop();
