@@ -1,7 +1,12 @@
 .home-container {
   height: 100vh;
-  position: relative;
+  /* position: relative; */
   flex-direction: column;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
 }
 .home-container .topic-tab {
   position: absolute;
@@ -11,13 +16,6 @@
   background-color: #444;
   display: flex;
   font-size: 28rpx;
-}
-.home-container .topic-tab.fixed {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 2;
 }
 .home-container .topic-tab .topic-tab-item {
   flex: 1 1 auto;

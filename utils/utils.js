@@ -1,15 +1,14 @@
 // 节流throttle代码（定时器）：
-export const throttle = function(fn, delay = 50) {
-  var canRun = true; // 通过闭包保存一个标记
-  return function () {
-    console.log(canRun)
-    if (!canRun) return; // 在函数开头判断标记是否为true，不为true则return
-    canRun = false; // 立即设置为false
 
-    setTimeout(() => { // 将外部传入的函数的执行放在setTimeout中
-      fn.apply(this, arguments);
-      // 最后在setTimeout执行完毕后再把标记设置为true(关键)表示可以执行下一次循环了。当定时器没有执行的时候标记永远是false，在开头被return掉
-      canRun = true;0
-    }, delay);
+export function throttle(fn, interval) {
+  var enterTime = 0;//触发的时间
+  var gapTime = interval || 16.7;//间隔时间，如果interval不传，则默认300ms
+  return function () {
+    var context = this;
+    var backTime = new Date();//第一次函数return即触发的时间
+    if (backTime - enterTime > gapTime) {
+      fn.apply(context, arguments);
+      enterTime = backTime;//赋值给第一次触发的时间，这样就保存了第二次触发的时间
+    }
   };
 }

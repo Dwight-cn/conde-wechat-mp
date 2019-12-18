@@ -21,6 +21,7 @@ Page({
         topicContent: [[], [], [], [], []],
         topicLoading: [false, false, false, false, false],
         topicLoaded: [false, false, false, false, false],
+        topicUpdating: [false, false, false, false, false],
         defaultTopicParams: {
             tab: '', // 主题分类。目前有 ask share job good
             page: 1, // 页数
@@ -70,16 +71,25 @@ Page({
         })
     },
     update() {
-        let { currentTopic, topicPages, topicContent } = this.data;
-        this.setData({ [`topicPages[${currentTopic}]`]: 1 });
+        let { currentTopic } = this.data;
+        this.setData({
+            [`topicPages[${currentTopic}]`]: 1,
+            [`topicUpdating[${currentTopic}]`]: true
+        });
         this._getTopicsList()
             .then(res => {
                 this.setData({
                     [`topicContent[${currentTopic}]`]: res,
-                    [`topicLoading[${currentTopic}]`]: false
+                    [`topicLoading[${currentTopic}]`]: false,
+                    [`topicUpdating[${currentTopic}]`]: false
                 })
             })
-            .catch(err => { })
+            .catch(err => {
+                this.setData({
+                    [`topicLoading[${currentTopic}]`]: false,
+                    [`topicUpdating[${currentTopic}]`]: false
+                })
+            })
     },
     loadMore() {
         let { currentTopic, topicPages, topicContent, topicLoaded } = this.data;
@@ -149,5 +159,9 @@ Page({
 
     onPullDownRefresh() {
         this.update();
+    },
+
+    handleScroll(e) {
+        console.log(e)
     }
 })

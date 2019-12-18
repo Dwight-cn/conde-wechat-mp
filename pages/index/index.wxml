@@ -8,11 +8,8 @@
     <!-- 话题列表 -->
     <swiper class="top-list-wrap" current="{{currentTopic}}" bindchange="swiperChangeHandle" bindtransition="swiperTransitionHandle" bindanimationfinish="animationfinishHandle">
         <swiper-item wx:for="{{topicContent}}" wx:key="{{index}}" wx:for-item="list" wx:for-index="idx" class="top-list-item">
-            <x-scroll-view bindpulldownrefresh="upper"  bindloadmore="loadMore"  nomore="{{!topicLoading[idx] &&  topicLoaded[idx]}}"  refreshing="{{topicLoading[idx]}}" class="top-list-scroller">
+            <x-scroll-view bind:scrolltoupper="upper"  bind:scrolltolower="loadMore" laaded="{{!topicLoading[idx] &&  topicLoaded[idx]}}"  updating="{{topicUpdating[idx]}}" class="top-list-scroller" loadingMore="{{topicLoading[idx]}}">
                 <topic-item wx:for="{{list}}" wx:key="{{item.id}}" data="{{item}}"></topic-item>
-                <!-- <view class="load-tips {{!topicLoading[idx]? 'hide': ''}}"  wx:if="{{!topicLoaded[idx]}}">加载中……</view> -->
-                <!-- <loading class="{{!topicLoading[idx]? 'hide': ''}}"  wx:if="{{!topicLoaded[idx]}}"></loading> -->
-                <!-- <view class="load-tips" wx:if="{{!topicLoading[idx] &&  topicLoaded[idx]}}">已经到底啦</view> -->
             </x-scroll-view>
         </swiper-item>
     </swiper>

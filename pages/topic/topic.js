@@ -9,13 +9,12 @@ Page({
     },
     onLoad(option) {
         this.setData({ topicId: option.id });
+        wx.showLoading()
         getTopicDetail(this.data.topicId, {
             mdrender: false
         })
             .then(res => {
-
                 let topic = this.topicDataModel(res)
-
                 // 文章markdown处理
                 let data = app.towxml.toJson(
                     res.content,               // `markdown`或`html`文本内容
@@ -41,13 +40,16 @@ Page({
                         })
                     }
                 };
-
-                console.log(topic)
+                setTimeout(() => {
+                    wx.hideLoading()
+                }, 500);
+                // console.log(topic)
                 this.setData({
                     topicContent: data,
                     topic: topic
                 });
             })
+            .catch(() => { wx.hideLoading() })
 
     },
     topicDataModel(res) {

@@ -1,30 +1,33 @@
 <!-- components/xing/x-scroll-view/x-scroll-view.wxml -->
-<scroll-view class="scroll-view {{pullDownStatus === 3 ? 'refresh' : ''}} {{pullDownStatus === 4 ? 'finish' : ''}}" scroll-y scroll-with-animation enable-back-to-top scroll-anchoring bindscroll="_onScroll" bindtouchend="_onTouchEnd" bindscrolltolower="_onLoadmore">
-  <view class="scroll-view-inner">
+<scroll-view class="scroll-view" scroll-y scroll-with-animation enable-back-to-top  scroll-top="{{scrollTop}}" bind:scroll="_onScroll" bind:touchend="_onTouchEnd" bind:touchstart="_onTouchStart" bind:touchmove="_onTouchMove" bind:scrolltolower="_onLoadmore"  lower-threshold="{{lowerThreshold}}">
+  <view class="scroll-view-inner {{pullDownStatus === 1 ? 'pulling' : ''}}  {{pullDownStatus === 2 ? 'release' : ''}}  {{ pullDownStatus === 3 ? 'updating' : ''}}  {{ pullDownStatus === 4 ? 'finsh' : ''}}"
+  style="transform: translate3d(0,{{scrollOffset-40}}px,0);">
     <view class="pulldown">
-      <block wx:if="{{pullDownStatus === 0 || pullDownStatus === 1}}">
+      <view class="pulldown-item   {{ pullDownStatus !== 0 && pullDownStatus !== 1 ?'hidden':''}}">
         <text class="iconfont icon-pull-down" space="nbsp"></text>
         <text>{{pullText}}</text>
-      </block>
-      <block wx:if="{{pullDownStatus === 2}}">
+      </view>
+      <view class="pulldown-item {{ pullDownStatus !== 2 ?'hidden':''}}">
         <text class="iconfont icon-release-up" space="nbsp"></text>
         <text>{{releaseText}}</text>
-      </block>
-      <block wx:if="{{pullDownStatus === 3}}">
+      </view>
+      <view class="pulldown-item  {{  pullDownStatus !== 3 ?'hidden':''}}">
         <text class="iconfont icon-loading loading" space="nbsp"></text>
-        <text>{{loadingText}}...</text>
-      </block>
-      <block wx:if="{{pullDownStatus === 4}}">
+        <text>{{updatingText}}</text>
+      </view>
+      <view class="pulldown-item {{  pullDownStatus !== 4 ?'hidden':''}}">
         <text class="iconfont icon-complete" space="nbsp"></text>
         <text>{{finishText}}</text>
-      </block>
+      </view>
     </view>
     <slot></slot>
     <view class="loadmore">
-      <block wx:if="{{nomore}}">
-        <text>{{nomoreText}}</text>
+      <!-- 全部加载完 -->
+      <block wx:if="{{loaded}}">
+        <text>{{loadedText}}</text>
       </block>
-      <block wx:else>
+      <!-- 正在加载更多 -->
+      <block wx:elif="{{loadingMore}}">
         <text class="iconfont icon-loading loading" space="nbsp"></text>
         <text>{{loadmoreText}}</text>
       </block>
