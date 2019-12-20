@@ -7,8 +7,16 @@ export default (oOption = {}, fnDataModel) => {
     return new Promise((resolve, reject) => {
         request(oOption)
             .then(res => {
+                // ios机型上发现部分文章返回结果为字符串，导致渲染失败
+                if (typeof(res) === 'string') {
+                    try {
+                        res = JSON.parse(res.replace(/\s+/g, ' '))
+                    } catch (error) {
+                        console.log(error)
+                    }
+                }
                 if (res && res.success) {
-                    // 如果没有data字段，将当前res对象摊开
+                    // 如果没有data字段，将当前res对象展开
                     if (!res.data) {
                         delete res.success;
                         res.data = {

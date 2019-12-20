@@ -12,10 +12,10 @@
     <template is="entry" data="{{...topicContent}}" />
 </view>
 <!-- 评论区 -->
-<!-- <view class="topic-replies" hidden="{{!topic.reply_count ||  topic.reply_count<=0}}">
+<view class="topic-replies" hidden="{{!topic.reply_count ||  topic.reply_count<=0}}">
     <view class="replies-title">共{{topic.reply_count || 0}}条评论</view>
     <view class="reply-item" wx:for="{{topic.replies}}" wx:key="index">
         <author-info author="{{item.author}}" create-at="{{item.create_at}}"></author-info>
         <template is="entry" data="{{...item.content}}" />
     </view>
-</view> -->
+</view>

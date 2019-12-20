@@ -23,7 +23,7 @@ Page({
         defaultTopicParams: {
             tab: '', // 主题分类。目前有 ask share job good
             page: 1, // 页数
-            limit: 15, // 每一页的主题数量
+            limit: 10, // 每一页的主题数量
             mdrender: true // 当为 'false' 时，不渲染。默认为 'true'，渲染出现的所有 markdown 格式文本。
         },
         moreLoading: false

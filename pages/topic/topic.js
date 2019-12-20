@@ -16,6 +16,7 @@ Page({
             mdrender: false
         })
             .then(res => {
+                // console.log(res)
                 clearTimeout(timer)
                 let topic = this.topicDataModel(res)
                 // 文章markdown处理
@@ -52,7 +53,7 @@ Page({
                     topic: topic
                 });
             })
-            .catch(() => { wx.hideLoading() })
+            .catch((err) => {  wx.hideLoading() })
 
     },
     topicDataModel(res) {
