@@ -22,7 +22,7 @@
   text-align: center;
   line-height: 80rpx;
   color: #fff;
-  transition: color 0.5s;
+  transition: color 0.3s;
 }
 .home-container .topic-tab .topic-tab-item.cur {
   color: #80bd01;

@@ -140,5 +140,5 @@ Page({
         if (this.data.topicContent[this.data.currentTopic].length <= 0) {
             this.update();
         }
-    }, 500),
+    }, 300),
 })
