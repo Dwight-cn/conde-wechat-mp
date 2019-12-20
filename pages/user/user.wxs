@@ -1,0 +1,24 @@
+var utils = require("../../utils/utils.wxs");
+
+var _tabBorderOffset = 0;
+var tabBorderOffset = 0;
+
+var animationfinishHandle = function (e) {
+  _tabBorderOffset = tabBorderOffset
+}
+
+var swiperTransitionHandle = utils.throttle(function (arg) {
+  var e = arg[0]
+  var ownerInstance = arg[1]
+  var instance = ownerInstance.selectComponent('.top-tab-border') // 返回组件的实例
+  tabBorderOffset = _tabBorderOffset + e.detail.dx / 3
+  instance.setStyle({
+    'transform': 'translate3d('+ tabBorderOffset +'px, 0, 0)'
+  })
+})
+
+module.exports = {
+  tabBorderOffset: tabBorderOffset,
+  animationfinishHandle: animationfinishHandle,
+  swiperTransitionHandle: swiperTransitionHandle
+};

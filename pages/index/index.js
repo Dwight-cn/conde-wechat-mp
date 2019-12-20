@@ -2,7 +2,7 @@
 
 import { getTopicsList } from '../../api/topic'
 import { filterHTMLTag, formatTime, getDateDiff } from '../../lib/util'
-import { throttle } from "../../utils/utils";
+import { debounce } from "../../utils/utils";
 
 
 //index.js
@@ -13,8 +13,6 @@ const app = getApp()
 Page({
     data: {
         currentTopic: 0,
-        tabBorderOffser: 0,
-        _tabBorderOffser: 0,
         topicText: ['全部', '精华', '分享', '求助', '招聘'],
         topicTabs: ['', 'good', 'share', 'ask', 'job'],
         topicPages: [1, 17, 1, 1],
@@ -25,7 +23,7 @@ Page({
         defaultTopicParams: {
             tab: '', // 主题分类。目前有 ask share job good
             page: 1, // 页数
-            limit: 20, // 每一页的主题数量
+            limit: 15, // 每一页的主题数量
             mdrender: true // 当为 'false' 时，不渲染。默认为 'true'，渲染出现的所有 markdown 格式文本。
         },
         moreLoading: false
@@ -137,31 +135,10 @@ Page({
     },
 
     // swiperHandle
-    swiperChangeHandle(e) {
-        // console.log(e)
+    swiperChangeHandle: debounce(function (e) {
         this.setData({ currentTopic: e.detail.current });
         if (this.data.topicContent[this.data.currentTopic].length <= 0) {
             this.update();
         }
-        // console.log(this.data.currentTopic)
-    },
-    animationfinishHandle(e) {
-        // console.log(this.data.tabBorderOffser)
-        this.data._tabBorderOffser= this.data.tabBorderOffser
-    },
-
-    swiperTransitionHandle(e) {
-        // this.data._tabBorderOffser = this.data._tabBorderOffser + e.detail.dx / 5
-        // throttle((e) => {
-            this.setData({ tabBorderOffser: this.data._tabBorderOffser + e.detail.dx / 5})
-        // },500)(e)
-    },
-
-    onPullDownRefresh() {
-        this.update();
-    },
-
-    handleScroll(e) {
-        console.log(e)
-    }
+    }, 500),
 })

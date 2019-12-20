@@ -1,3 +1,6 @@
 {
-    "component": true
+    "component": true,
+    "usingComponents": {
+        "avatar": "/components/avatar/index"
+    }
 }

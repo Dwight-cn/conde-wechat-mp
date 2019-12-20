@@ -1,8 +1,8 @@
 {
     "enablePullDownRefresh": false,
     "usingComponents": {
-        "topic-item": "../../components/topic-item/topic-item",
-        "loading": "../../components/loading/loading",
+        "topic-item": "/components/topic-item/topic-item",
+        "loading": "/components/loading/loading",
         "x-scroll-view": "/components/x-scroll-view/x-scroll-view"
     }
 }

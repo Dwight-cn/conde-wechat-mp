@@ -1,36 +1,38 @@
 <view class="mine-header">
   <block wx:if="{{!$state.isLogin}}">
     <navigator url="/pages/login/login">
-      <view class="default-avatar"></view>
+      <avatar class="user-avatar"/>
       <view class="loginname">立即登录</view>
     </navigator>
   </block>
   <block wx:else>
     <navigator url="{{'/pages/user/user?name=' + $state.userInfo.loginname}}">
-      <image src="{{$state.userInfo.avatar_url}}" class="user-avatar" />
+      <avatar src="{{$state.userInfo.avatar_url}}" class="user-avatar" />
       <view class="loginname">{{$state.userInfo.loginname}}</view>
     </navigator>
   </block>
 </view>
-<view class="cell-group" hidden="{{!$state.isLogin}}">
-  <view class="cell">
-    <navigator class="cell__title" url="{{'/pages/user/user?name='+$state.userInfo.loginname+'&tab=0'}}">
-      最近回复
-    </navigator>
+<view class="mine-con">
+  <view class="cell-group" hidden="{{!$state.isLogin}}">
+    <view class="cell">
+      <navigator class="cell__title" url="{{'/pages/user/user?name='+$state.userInfo.loginname+'&tab=0'}}">
+        最近回复
+      </navigator>
+    </view>
+    <view class="cell">
+      <navigator class="cell__title" url="{{'/pages/user/user?name='+$state.userInfo.loginname+'&tab=1'}}">
+        最近发布
+      </navigator>
+    </view>
+    <view class="cell">
+      <navigator class="cell__title" url="{{'/pages/user/user?name='+$state.userInfo.loginname+'&tab=2'}}">
+        话题收藏
+      </navigator>
+    </view>
   </view>
-  <view class="cell">
-    <navigator class="cell__title" url="{{'/pages/user/user?name='+$state.userInfo.loginname+'&tab=1'}}">
-      最近发布
-    </navigator>
-  </view>
-  <view class="cell">
-    <navigator class="cell__title" url="{{'/pages/user/user?name='+$state.userInfo.loginname+'&tab=2'}}">
-      话题收藏
-    </navigator>
-  </view>
-</view>
-<view class="cell-group" hidden="{{!$state.isLogin}}">
-  <view class="cell" bind:tap="logout">
-    <view class="cell__title">退出</view>
+  <view class="cell-group" hidden="{{!$state.isLogin}}">
+    <view class="cell" bind:tap="logout">
+      <view class="cell__title">退出</view>
+    </view>
   </view>
 </view>

@@ -27,7 +27,6 @@
 .pulldown {
   height: 40px;
   width: 100%;
-  line-height: 40px;
   text-align: center;
   overflow: hidden;
   position: relative;
@@ -39,14 +38,21 @@
   right: 0;
   top: 0;
   opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 .pulldown-item.hidden{
   opacity: 0;
 }
-
-
 .pulldown text {
   color: #222;
+  font-size: 12px;
+}
+.pulldown-item .iconfont{
+  font-size: 18px;
+  margin-right: 10px;
 }
 
 .loadmore {
@@ -58,6 +64,12 @@
 
 .loadmore text {
   color: #444;
+  font-size: 12px;
+}
+.loadmore text.iconfont {
+  font-size: 18px;
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
 @keyframes loading {

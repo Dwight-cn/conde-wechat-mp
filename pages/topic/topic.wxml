@@ -1,21 +1,21 @@
 <import src="/components/towxml/entry.wxml" />
-<view class="topic-header">
+<view class="topic-header" hidden="{{!topicContent}}">
     <!-- 主题标题 -->
     <view class="topic-title">{{topic.title}}</view>
     <view class="topic-author">
         <!-- 主题作者头像 -->
-        <author-info  author="{{topic.author}}" create-at="{{topic.create_at}}"></author-info>
+        <author-info author="{{topic.author}}" create-at="{{topic.create_at}}"></author-info>
     </view>
 </view>
 <!-- 文章内容 -->
-<view class="topic-content">
+<view class="topic-content" hidden="{{!topicContent}}">
     <template is="entry" data="{{...topicContent}}" />
 </view>
 <!-- 评论区 -->
-<view class="topic-replies">
+<!-- <view class="topic-replies" hidden="{{!topic.reply_count ||  topic.reply_count<=0}}">
     <view class="replies-title">共{{topic.reply_count || 0}}条评论</view>
-    <view class="reply-item" wx:for="{{topic.replies}}" wx:key="">
+    <view class="reply-item" wx:for="{{topic.replies}}" wx:key="index">
         <author-info author="{{item.author}}" create-at="{{item.create_at}}"></author-info>
         <template is="entry" data="{{...item.content}}" />
     </view>
-</view>
+</view> -->

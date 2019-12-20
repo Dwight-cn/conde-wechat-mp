@@ -19,12 +19,12 @@ Component({
     updating: {
       type: Boolean,
       value: false,
-      observer: '_onUpdateFinished',
+      observer: '_onUpdateChange',
     },
     // 刷新中文案
     updatingText: {
       type: String,
-      value: '正在刷新...',
+      value: '正在刷新',
     },
     // 刷新完毕文案
     finishText: {
@@ -59,7 +59,7 @@ Component({
     // 距底部多远时，触发 scrolltolower 事件
     lowerThreshold: {
       type: Number,
-      value: 100,
+      value: 200,
     },
   },
 
@@ -148,7 +148,7 @@ Component({
       }
     },
 
-    _onUpdateFinished(newVal, oldVal) {
+    _onUpdateChange(newVal, oldVal) {
       if (oldVal === true && newVal === false) {
         this.properties.loaded = false;
         this.setData({
@@ -163,6 +163,11 @@ Component({
             pullDownStatus: 0,
           })
         }, 500);
+      } else if (oldVal === false && newVal === true){
+        this.setData({
+          pullDownStatus: 3,
+          lastScrollEnd: 0,
+        })
       }
     },
 

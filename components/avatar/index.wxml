@@ -1,0 +1,4 @@
+<view class="avatar">
+  <image src="{{src}}" class="avatar-img"  hidden="{{!avatarLoaded}}" bind:load="onImgLoad"/>
+  <view class="default-avatar"  hidden="{{avatarLoaded}}"></view>
+</view>

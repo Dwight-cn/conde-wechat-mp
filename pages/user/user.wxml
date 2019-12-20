@@ -1,6 +1,7 @@
+<wxs src="./user.wxs" module="_wxs" />
 <view class="user-top-bg"></view>
 <!-- 头像 -->
-<image class="user-avatar" src="{{userInfo.avatar_url || '../../images/bg.gif'}}" />
+<avatar class="user-avatar" src="{{userInfo.avatar_url}}" />
 <!-- 用户名 -->
 <view class="username">{{ userInfo.loginname || '　'}}</view>
 <!-- github地址 -->
@@ -29,7 +30,7 @@
         </view>
         <view class="top-tab-border" style="left: {{ tabBorderOffser }}px"></view>
     </view>
-    <swiper class="user-list-wrap" current="{{currentTab}}" bindchange="swiperChangeHandle" bindtransition="swiperTransitionHandle" bindanimationfinish="animationfinishHandle">
+    <swiper class="user-list-wrap" current="{{currentTab}}" bindchange="swiperChangeHandle"  bind:transition="{{_wxs.swiperTransitionHandle}}" bind:animationfinish="{{_wxs.animationfinishHandle}}">
         <swiper-item wx:for="{{tabContent}}" wx:key="{{index}}" wx:for-item="list" wx:for-index="idx" class="top-list-item">
             <scroll-view scroll-y="{{allowScrollY}}" bindscrolltolower="loadMore">
                 <topic-item wx:for="{{list}}" wx:key="{{item.id}}" data="{{item}}"></topic-item>

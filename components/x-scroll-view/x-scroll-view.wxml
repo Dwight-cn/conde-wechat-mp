@@ -4,19 +4,19 @@
   style="transform: translate3d(0,{{scrollOffset-40}}px,0);">
     <view class="pulldown">
       <view class="pulldown-item   {{ pullDownStatus !== 0 && pullDownStatus !== 1 ?'hidden':''}}">
-        <text class="iconfont icon-pull-down" space="nbsp"></text>
+        <text class="iconfont icon-pull-down"></text>
         <text>{{pullText}}</text>
       </view>
       <view class="pulldown-item {{ pullDownStatus !== 2 ?'hidden':''}}">
-        <text class="iconfont icon-release-up" space="nbsp"></text>
+        <text class="iconfont icon-release-up"></text>
         <text>{{releaseText}}</text>
       </view>
       <view class="pulldown-item  {{  pullDownStatus !== 3 ?'hidden':''}}">
-        <text class="iconfont icon-loading loading" space="nbsp"></text>
+        <text class="iconfont icon-loading loading"></text>
         <text>{{updatingText}}</text>
       </view>
       <view class="pulldown-item {{  pullDownStatus !== 4 ?'hidden':''}}">
-        <text class="iconfont icon-complete" space="nbsp"></text>
+        <text class="iconfont icon-complete"></text>
         <text>{{finishText}}</text>
       </view>
     </view>
@@ -28,7 +28,7 @@
       </block>
       <!-- 正在加载更多 -->
       <block wx:elif="{{loadingMore}}">
-        <text class="iconfont icon-loading loading" space="nbsp"></text>
+        <text class="iconfont icon-loading loading"></text>
         <text>{{loadmoreText}}</text>
       </block>
     </view>

@@ -4,16 +4,19 @@ import { getDateDiff } from '../../lib/util'
 const app = getApp();
 Page({
     data: {
-        topic: {},
-        topicContent: {}
+        topic: null,
+        topicContent: null
     },
     onLoad(option) {
         this.setData({ topicId: option.id });
-        wx.showLoading()
+        let timer = setTimeout(() => {
+            wx.showLoading({ title: '拼命加载中'})
+        }, 500);
         getTopicDetail(this.data.topicId, {
             mdrender: false
         })
             .then(res => {
+                clearTimeout(timer)
                 let topic = this.topicDataModel(res)
                 // 文章markdown处理
                 let data = app.towxml.toJson(
@@ -42,7 +45,7 @@ Page({
                 };
                 setTimeout(() => {
                     wx.hideLoading()
-                }, 500);
+                }, 200);
                 // console.log(topic)
                 this.setData({
                     topicContent: data,

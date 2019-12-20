@@ -12,7 +12,6 @@
     "navigationBarTitleText": "CNode",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": false,
-    "backgroundColor": "#444",
     "backgroundTextStyle": "light"
   },
   "tabBar": {

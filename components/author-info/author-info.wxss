@@ -1,19 +1,22 @@
 .author-info {
   display: flex;
-  align-items: center; }
-  .author-info .author-avatar {
-    width: 60rpx;
-    height: 60rpx;
-    border-radius: 50%;
-    background-color: #eee; }
-  .author-info .author-info-right {
-    display: flex;
-    flex-direction: column;
-    margin-left: 20rpx;
-    flex: 1 1 auto; }
-    .author-info .author-info-right .author-name {
-      font-size: 24rpx;
-      color: #1b1b19; }
-    .author-info .author-info-right .create-at {
-      font-size: 20rpx;
-      color: #999; }
+  align-items: center;
+}
+.author-info .author-avatar {
+  width: 60rpx;
+  height: 60rpx;
+}
+.author-info .author-info-right {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+  flex: 1 1 auto;
+}
+.author-info .author-info-right .author-name {
+  font-size: 24rpx;
+  color: #1b1b19;
+}
+.author-info .author-info-right .create-at {
+  font-size: 20rpx;
+  color: #999;
+}
